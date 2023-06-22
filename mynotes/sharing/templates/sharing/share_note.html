@@ -1,0 +1,20 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}Share Note{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto py-8 px-4">
+        <div class="bg-yellow-100 rounded-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold mb-4">Share Note</h1>
+            <form action="{% url 'sharing:share_note' note.id %}" method="post">
+                {% csrf_token %}
+                <p class="text-gray-700 text-sm mb-4">Note: <span class="font-bold">{{ note.title }}</span></p>
+                <div class="mb-4">
+                    <label for="share_with" class="text-gray-700 text-sm">Share with:</label>
+                    <input type="text" id="share_with" name="share_with" class="form-input block w-full mt-1" placeholder="Username">
+                </div>
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md">Share</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

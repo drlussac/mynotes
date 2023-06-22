@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}Shared Note{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto py-8">
+        <div class="bg-blue-100 rounded-lg p-6">
+            <h1 class="text-3xl font-bold mb-4">{{ shared_note.note.title }}</h1>
+            <p class="text-gray-700 text-sm mb-2">Shared by: {{ shared_note.note.owner.username }}</p>
+            <p class="text-gray-700 text-sm mb-2">Category: <span class="font-bold">{{ shared_note.note.category }}</span></p>
+            <p class="text-gray-700 text-sm mb-2">Shared at: <span class="font-bold">{{ shared_note.note.created_at }}</span></p>
+            <div class="prose">
+                {{ shared_note.note.content }}
+            </div>
+            {% if shared_note.note.image %}
+                <div class="mt-6">
+                    <img src="{{ shared_note.note.image.url }}" alt="Note Image" class="w-full">
+                </div>
+            {% endif %}
+            {% if shared_note.note.video %}
+                <div class="mt-6">
+                    <video src="{{ shared_note.note.video.url }}" controls class="w-full"></video>
+                </div>
+            {% endif %}
+            {% if shared_note.note.voice %}
+                <div class="mt-6">
+                    <audio src="{{ shared_note.note.voice.url }}" controls class="w-full"></audio>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}Create Note{% endblock %}
+
+{% block content %}
+    <div class="max-w-lg mx-auto bg-white p-8 rounded shadow">
+        <h2 class="text-2xl font-bold mb-4">Create Note</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="id_title" class="block font-semibold mb-2">Title</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-4">
+                <label for="id_category" class="block font-semibold mb-2">Category</label>
+                {{ form.category }}
+            </div>
+            <div class="mb-4">
+                <label for="id_content" class="block font-semibold mb-2">Content</label>
+                {{ form.content }}
+            </div>
+            <div class="mb-4">
+                <label for="id_image" class="block font-semibold mb-2">Image</label>
+                {{ form.image }}
+            </div>
+            <div class="mb-4">
+                <label for="id_video" class="block font-semibold mb-2">Video</label>
+                {{ form.video }}
+            </div>
+            <div class="mb-4">
+                <label for="id_voice" class="block font-semibold mb-2">Voice</label>
+                {{ form.voice }}
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">Create</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
